@@ -12,21 +12,30 @@ function App() {
 
   const palpiteInput = useRef()
 
+
+  function aoEntrarTexto(evento) {
+    if (evento.keyCode === 13) {
+      testarPalpite()
+    }
+  }
+
   function testarPalpite() {
 
     const palpite = Number(palpiteInput.current.value)
 
     if (palpite < numero) {
-      setMensagem('Seu palpite é muito pequeno!')
+      setMensagem('Seu palpite ' +  palpite + ' é muito pequeno!')
     }
     else if (palpite > numero) {
-      setMensagem('Seu palpite é muito grande!')
+      setMensagem('Seu palpite  ' +  palpite + ' é muito grande!')
     }
     else {
       setMensagem('Você acertou!')
       setAcertou(true)
     }
 
+    palpiteInput.current.value = ''
+    palpiteInput.current.focus()
     setTentativas(tentativas + 1)
 
   }
@@ -45,7 +54,7 @@ function App() {
       <p className="fonte-maior">Em qual número eu estou pensando?</p>
       
       <div>
-        <input ref={palpiteInput} className="numero" type="text" />
+        <input onKeyUp={aoEntrarTexto} ref={palpiteInput} className="numero" type="text" />
         <button className="enviar" onClick={testarPalpite}>Enviar</button>
       </div>
 
