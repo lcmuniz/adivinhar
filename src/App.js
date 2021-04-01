@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className="container">
-      <p className="fonte-maior">Adivinhe o número em que estou pensando.</p>
+      <p className="fonte-maior">Em qual número eu estou pensando?</p>
       
       <div>
         <input ref={palpiteInput} className="numero" type="text" />
